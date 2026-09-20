@@ -1,12 +1,13 @@
+import os
 import yfinance as yf
 import pymysql
 
-# Veritabanı konfigürasyonu
+# Veritabanı konfigürasyonu (şifreleri repoya yazmayın; ortam değişkeni kullanın)
 DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': '123456',
-    'db': 'hisse_senedi_db',
+    'host': os.environ.get('DB_HOST', 'localhost'),
+    'user': os.environ.get('DB_USER', 'root'),
+    'password': os.environ.get('DB_PASSWORD', ''),
+    'db': os.environ.get('DB_NAME', 'hisse_senedi_db'),
     'charset': 'utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor
 }

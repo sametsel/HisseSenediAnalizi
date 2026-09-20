@@ -1,20 +1,14 @@
 import pymysql
 from Bollinger import BollingerBandsAnalyzer
 from Ema import StockAnalyzer
+from VeriCekme import DB_CONFIG
 
 def analyze_stocka(stock_code):
     """
     Verilen hisse kodu için analiz yapar ve sonucu döndürür.
     """
     try:
-        connection = pymysql.connect(
-            host='localhost',
-            user='root',
-            password='123456',
-            db='hisse_senedi_db',
-            charset='utf8mb4',
-            cursorclass=pymysql.cursors.DictCursor
-        )
+        connection = pymysql.connect(**DB_CONFIG)
 
         sumOfSignals = 0
 
